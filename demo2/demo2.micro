@@ -1,0 +1,11 @@
+PROGRAM test
+BEGIN
+
+    STRING input := "It is string literal: ";
+    STRING space := " ";
+    STRING eol := "\n";
+
+    FUNCTION INT F (INT n)
+    BEGIN
+
+        IF (n > 2)
