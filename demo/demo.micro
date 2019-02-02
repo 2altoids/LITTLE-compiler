@@ -1,6 +1,0 @@
-PROGRAM demo
-BEGIN
-
-    (hello100);
-
-END
