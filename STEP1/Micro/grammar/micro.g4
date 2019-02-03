@@ -1,5 +1,5 @@
 // Define a grammar called little
-grammar MicroGrammar;
+grammar micro;
 
 /* Program */
 program:            PROGRAM id BEGIN pgm_body END;
