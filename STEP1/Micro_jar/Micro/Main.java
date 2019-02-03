@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 
 public class Main
 {
-
+    private static CustomToken customToken = new CustomToken();
 
     public static void main(String[] args)
     {
@@ -32,10 +32,9 @@ public class Main
         {
             fileName = args[0];
             filePath = path + "\\" + fileName;
-            //System.out.printf("[1] path: %s\n", filePath);
 
-            try
-            {
+            try {
+
                 run(filePath);
             }
             catch (IOException e)
@@ -54,16 +53,18 @@ public class Main
     }
 
 
-    public static void run(String filePath) throws IOException, URISyntaxException
+    public static void run(String str) throws IOException, URISyntaxException
     {
+        /*In the final application file name should be provided via command line*/
+
         // Get absolute path to the .micro file
         //===========================================================================================//
         URL res = null;
 
+
         // USe this if you want to run it from IDE
-        // ========================================================================================== //
         /*
-        String path = "absolute path to root where file is";
+        String path = "C:\\absolute_path _to_the\\file_name.micro";
         // fibonacci.micro
         // loop.micro
         // nested.micro
@@ -71,11 +72,11 @@ public class Main
         String file = "sqrt.micro";
         String filePath = path + file;
         */
+
+
+
         //res = Paths.get(filePath).toUri().toURL();
-        // ========================================================================================== //
-
-
-        res = Paths.get(filePath).toUri().toURL();
+        res = Paths.get(str).toUri().toURL();
         //System.out.printf("[3] path: %s\n", res.toString());
         //===========================================================================================//
 
@@ -452,6 +453,16 @@ public class Main
         // Get symbolic name by type basically "symbolic name" is "Token Type"
         String tokenType = parser.getVocabulary().getSymbolicName(tokenTypeNum);
 
+        String tokenType2 = customToken.testToken(tokenValue);
+        if(tokenType2 == null)
+        {
+            tokenType2 = tokenType;
+        }
+        else
+        {
+            tokenType = tokenType2;
+        }
+
         // -1 associated with EOF, there is no needs to print it out
         if(tokenTypeNum != -1)
         {
@@ -462,7 +473,5 @@ public class Main
 
             System.out.printf("Token Type: %s\nValue: %s\n", tokenType, tokenValue);
         }
-
-
     }
 }

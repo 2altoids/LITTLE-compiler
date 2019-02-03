@@ -1,3 +1,0 @@
-How to run in Windows:
-	1: java -jar Micro.jar file_name.micro
-	2: file_name.micro must be in the same directory
