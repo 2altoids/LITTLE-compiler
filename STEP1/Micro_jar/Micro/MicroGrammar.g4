@@ -1,4 +1,7 @@
-// Define a grammar called little
+// Define a grammar called Micro
+// Montana State University
+// Class: Compilers - CSCI 468
+// Authors: Olexandr Matveyev, Mandy Hawkins, Abdulrahman Alhitm, Michael Seeley
 grammar MicroGrammar;
 
 /* Program */
