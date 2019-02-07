@@ -1,3 +1,9 @@
+/**
+ * Montana State University
+ * Class: Compilers - CSCI 468
+ * @author Olexandr Matveyev, Mandy Hawkins, Abdulrahman Alhitm, Michael Seeley
+ */
+
 import java.util.HashMap;
 import java.util.Map;
 
