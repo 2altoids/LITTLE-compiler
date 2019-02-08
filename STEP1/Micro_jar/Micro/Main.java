@@ -31,7 +31,7 @@ public class Main
         if(args[0] != null)
         {
             fileName = args[0];
-            filePath = path + "\\" + fileName;
+            filePath = path + "/" + fileName;
 
             try {
 
@@ -72,8 +72,6 @@ public class Main
         String file = "sqrt.micro";
         String filePath = path + file;
         */
-
-
 
         //res = Paths.get(filePath).toUri().toURL();
         res = Paths.get(str).toUri().toURL();
