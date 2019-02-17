@@ -1,0 +1,18 @@
+1:  Accepted
+2:  Not accepted
+3:  Not accepted
+4:  Not accepted
+5:  Accepted
+6:  Accepted
+7:  Accepted
+8:  Accepted
+9:  Not accepted
+10: Not accepted
+12: Not accepted
+15: Not accepted
+16: Accepted
+17: Not accepted
+18: Accepted
+19: Accepted
+20: Accepted
+21: Accepted
