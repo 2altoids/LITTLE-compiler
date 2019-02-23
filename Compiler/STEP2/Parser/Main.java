@@ -10,7 +10,6 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,30 +18,48 @@ public class Main
 {
     private static CustomToken customToken = new CustomToken();
 
+    /**
+     * mmain function should accept one argument witch is file name of .micro
+     * @param args: String
+     */
     public static void main(String[] args)
     {
         String fileName = null;
         String path = null;
         String filePath = null;
 
+        // Get absolute path of the running Main.class
         Path currentDir = Paths.get(".");
         path = currentDir.toAbsolutePath().toString();
 
+        // Initialize URL
+        URL res = null;
+
         if(args[0] != null)
         {
+            // Combine "absolute path of the running Main.class" and "file name"
             fileName = args[0];
             filePath = path + "/" + fileName;
 
             try
             {
+                // Get resource from the file path
+                res = Paths.get(filePath).toUri().toURL();
+
                 // Run Tokenizer
-                run(filePath);
+                // IT IS STEP 1
+                //===========================================================================================//
+                //run(res);
+                //===========================================================================================//
+
+                // Initialize and run parser
+                // IT IS STEP 2
+                //===========================================================================================//
+                MicroParser microParser = new MicroParser();
+                microParser.run(res);
+                //===========================================================================================//
             }
             catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-            catch (URISyntaxException e)
             {
                 e.printStackTrace();
             }
@@ -53,42 +70,14 @@ public class Main
         }
     }
 
-
-    public static void run(String str) throws IOException, URISyntaxException
+    /**
+     *  Tokenizer
+     * @param res: URL
+     * @throws IOException
+     */
+    public static void run(URL res) throws IOException
     {
         /*In the final application file name should be provided via command line*/
-
-        //===========================================================================================//
-        URL res = null;
-        //===========================================================================================//
-
-
-        // USe this if you want to run it from IDE
-        //===========================================================================================//
-        /*
-        String path = "C:\\absolute_path _to_the\\file_name.micro";
-        String file = "test1.micro";
-        String filePath = path + file;
-        */
-
-
-        // USe this if you want to run it from IDE
-        // Get absolute path to the .micro file
-        //res = Paths.get(filePath).toUri().toURL();
-        //===========================================================================================//
-
-        // User this if you are biding jar file
-        //===========================================================================================//
-        // Get absolute path to the .micro file
-        res = Paths.get(str).toUri().toURL();
-        //===========================================================================================//
-
-        // Initialize and run parser
-        // IT IS STEP 2
-        //===========================================================================================//
-        MicroParser microParser = new MicroParser();
-        microParser.run(res);
-        //===========================================================================================//
 
         // Initialize stream of chars from .micro file
         CharStream inp = null;
@@ -160,7 +149,7 @@ public class Main
                             CommonTokenStream tokens = new CommonTokenStream(lexer);
                             MicroGrammarParser parser = new MicroGrammarParser(tokens);
 
-                            //output(parser);
+                            output(parser);
                         }
                     }
                 }
