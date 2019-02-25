@@ -7,6 +7,16 @@ How to run shell script Micro.sh in Linux:
 	2: file_name.micro must be in the same directory
 	3: This shell script just run Parser.jar and takes argument from the command line,
 	   it will not compile java classes
+	   
+	--- IF YOU WANT TO COMPILE IT ---
+	java org.antlr.v4.Tool MicroGrammar.g4
+	javac MicroGrammar*.java
+	avac CustomToken.java
+	javac MicroParser.java
+	javac Main.java
+	
+	--- AFTER RUN ---
+	java Main file_name.micro
 	
 Submission structure:
 	1: Main.java is the Driver class;
