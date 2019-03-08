@@ -10,6 +10,9 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class MicroListener extends MicroGrammarBaseListener
 {
+    // Here should be implemented data structure to store our symbol table
+    // and we have to return this symbol table from this class to the caller-class
+
     /**
      * {@inheritDoc}
      *
@@ -17,7 +20,8 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterProgram(MicroGrammarParser.ProgramContext ctx)
     {
-        System.out.printf("GLOBAL\n");
+        /*Just test*/
+        System.out.printf("Symbol table GLOBAL\n");
     }
 
     /**
@@ -55,7 +59,57 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterDecl(MicroGrammarParser.DeclContext ctx) { }
+    @Override public void enterDecl(MicroGrammarParser.DeclContext ctx)
+    {
+        /*Just a test*/
+
+        String type = null;
+        String name = null;
+
+        // try-catch for var-name
+        try
+        {
+            name = ctx.decl().var_decl().id_list().id().IDENTIFIER().toString();
+            System.out.println(ctx.decl().var_decl().id_list().getText());
+        }
+        catch (Exception e)
+        {
+            // Uncomment if you have to debug it
+            //System.out.printf("var-name is: %s\n", e.getMessage());
+        }
+
+        // try-catch for FLOAT
+        try
+        {
+            type = ctx.decl().var_decl().var_type().FLOAT().toString();
+        }
+        catch (Exception e)
+        {
+            // Uncomment if you have to debug it
+            //System.out.printf("FLOAT is: %s\n", e.getMessage());
+        }
+
+        // If var-type was null that most likely it means that type is not FLOAT, but is INT
+        // so we have to try to get it
+        if (type == null)
+        {
+            // try-catch for INT
+            try
+            {
+                type = ctx.decl().var_decl().var_type().INT().toString();
+            }
+            catch (Exception e)
+            {
+                // Uncomment if you have to debug it
+                //System.out.printf("INT is: %s\n", e.getMessage());
+            }
+        }
+
+        if (type != null && name != null)
+        {
+            System.out.printf("name %s type %s\n", name, type);
+        }
+    }
     /**
      * {@inheritDoc}
      *
@@ -69,10 +123,13 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterString_decl(MicroGrammarParser.String_declContext ctx)
     {
+        /*Just a test*/
+        // ===================================================================== //
         String type = ctx.STRING().toString();
         String identName = ctx.id().IDENTIFIER().toString();
         String value = ctx.str().STRINGLITERAL().toString();
-        System.out.printf("%s %s %s\n", type, identName, value);
+        System.out.printf("name %s type %s value %s\n", identName, type, value);
+        // ===================================================================== //
     }
     /**
      * {@inheritDoc}
@@ -85,10 +142,7 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterStr(MicroGrammarParser.StrContext ctx)
-    {
-
-    }
+    @Override public void enterStr(MicroGrammarParser.StrContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -210,10 +264,13 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterFunc_decl(MicroGrammarParser.Func_declContext ctx)
     {
-        String func = ctx.FUNCTION().toString();
-        String funcType = ctx.any_type().VOID().toString();
+        /*Just test*/
+        // ===================================================================== //
+        //String func = ctx.FUNCTION().toString();
+        //String funcType = ctx.any_type().VOID().toString();
         String funcName = ctx.id().IDENTIFIER().toString();
-        System.out.printf("%s %s %s\n", func, funcType, funcName);
+        System.out.printf("\nSymbol table %s\n", funcName);
+        // ===================================================================== //
     }
     /**
      * {@inheritDoc}
@@ -226,7 +283,10 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterFunc_body(MicroGrammarParser.Func_bodyContext ctx) { }
+    @Override public void enterFunc_body(MicroGrammarParser.Func_bodyContext ctx)
+    {
+
+    }
     /**
      * {@inheritDoc}
      *
@@ -238,7 +298,26 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterStmt_list(MicroGrammarParser.Stmt_listContext ctx) { }
+    @Override public void enterStmt_list(MicroGrammarParser.Stmt_listContext ctx)
+    {
+        int count = 1;
+        String stmt = null;
+        try
+        {
+            stmt = ctx.stmt_list().stmt().while_stmt().WHILE().toString();
+        }
+        catch (Exception e)
+        {
+            // Uncomment to debug
+            //System.out.printf("func-stmt: %s\n", e.getMessage());
+        }
+
+        if (stmt != null)
+        {
+            System.out.printf("\nSymbol table BLOCK %d\n", count);
+            count++;
+        }
+    }
     /**
      * {@inheritDoc}
      *
@@ -250,7 +329,10 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterStmt(MicroGrammarParser.StmtContext ctx) { }
+    @Override public void enterStmt(MicroGrammarParser.StmtContext ctx)
+    {
+
+    }
     /**
      * {@inheritDoc}
      *

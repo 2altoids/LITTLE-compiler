@@ -59,8 +59,8 @@ public class Driver
                 // Building symbol table
                 // IT IS STEP 3
                 //===========================================================================================//
-                MicroSymbolTable microSymbolTable = new MicroSymbolTable(res);
-                microSymbolTable.run();
+                DriverSymbolTable driverSymbolTable = new DriverSymbolTable(res);
+                driverSymbolTable.run();
                 //===========================================================================================//
 
             }
