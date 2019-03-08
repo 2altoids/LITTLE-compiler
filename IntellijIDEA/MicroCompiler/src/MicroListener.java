@@ -13,6 +13,9 @@ public class MicroListener extends MicroGrammarBaseListener
     // Here should be implemented data structure to store our symbol table
     // and we have to return this symbol table from this class to the caller-class
 
+    // This global var is used to count number of IFs WHILEs statements in side a function
+    private int count = 1;
+
     /**
      * {@inheritDoc}
      *
@@ -61,36 +64,78 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterDecl(MicroGrammarParser.DeclContext ctx)
     {
-        /*Just a test*/
+        String strType = null;
+        String strIdName = null;
+        String strValue = null;
 
         String type = null;
-        String name = null;
+        String name[] = null;
+        String value = null;
 
-        // try-catch for var-name
+        // try-catch for STRING block declaration
+        // ========================================================================================== //
         try
         {
-            name = ctx.decl().var_decl().id_list().id().IDENTIFIER().toString();
-            System.out.println(ctx.decl().var_decl().id_list().getText());
+            strType = ctx.string_decl().STRING().toString();
+            strIdName = ctx.string_decl().id().IDENTIFIER().toString();
+            strValue = ctx.string_decl().str().STRINGLITERAL().toString();
+
+            System.out.printf("name %s type %s value %s\n", strIdName, strType, strValue);
+        }
+        catch (Exception e)
+        {
+            // Uncomment if you have to debug it
+            //System.out.printf("[STRING] var-name is: %s\n", e.getMessage());
+        }
+        // ========================================================================================== //
+
+        // try-catch for var-name *IS NOT FOR STRING*
+        // ========================================================================================== //
+        try
+        {
+            // Split-up var-names
+            // 1: Remove spaces from the incoming string of var-names
+            String str1 = ctx.decl().var_decl().id_list().getText().replaceAll("\\s+", "");
+
+            // Check if we have more then one var-name
+            // If more then 1, than we have multiple var-names
+            if (str1.length() > 1)
+            {
+                // 2: Create String array from the splitted string
+                name = str1.split(",");
+            }
+            else if (str1.length() == 1)
+            {
+                name = new String[1];
+                name[0] = str1;
+            }
         }
         catch (Exception e)
         {
             // Uncomment if you have to debug it
             //System.out.printf("var-name is: %s\n", e.getMessage());
         }
+        // ========================================================================================== //
 
-        // try-catch for FLOAT
-        try
+        // FLOAT
+        // ========================================================================================== //
+        if (type == null)
         {
-            type = ctx.decl().var_decl().var_type().FLOAT().toString();
+            // try-catch for FLOAT
+            try
+            {
+                type = ctx.decl().var_decl().var_type().FLOAT().toString();
+            }
+            catch (Exception e)
+            {
+                // Uncomment if you have to debug it
+                //System.out.printf("FLOAT is: %s\n", e.getMessage());
+            }
         }
-        catch (Exception e)
-        {
-            // Uncomment if you have to debug it
-            //System.out.printf("FLOAT is: %s\n", e.getMessage());
-        }
+        // ========================================================================================== //
 
-        // If var-type was null that most likely it means that type is not FLOAT, but is INT
-        // so we have to try to get it
+        // INT
+        // ========================================================================================== //
         if (type == null)
         {
             // try-catch for INT
@@ -104,10 +149,15 @@ public class MicroListener extends MicroGrammarBaseListener
                 //System.out.printf("INT is: %s\n", e.getMessage());
             }
         }
+        // ========================================================================================== //
 
+        // Print result *IS NOT FOR STRING*
         if (type != null && name != null)
         {
-            System.out.printf("name %s type %s\n", name, type);
+            for (int i = 0; i < name.length; i++)
+            {
+                System.out.printf("name %s type %s\n", name[i], type);
+            }
         }
     }
     /**
@@ -123,13 +173,15 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterString_decl(MicroGrammarParser.String_declContext ctx)
     {
-        /*Just a test*/
+        /*
+        // Just a test
         // ===================================================================== //
         String type = ctx.STRING().toString();
         String identName = ctx.id().IDENTIFIER().toString();
         String value = ctx.str().STRINGLITERAL().toString();
         System.out.printf("name %s type %s value %s\n", identName, type, value);
         // ===================================================================== //
+        */
     }
     /**
      * {@inheritDoc}
@@ -285,7 +337,101 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterFunc_body(MicroGrammarParser.Func_bodyContext ctx)
     {
+        String strType = null;
+        String strIdName = null;
+        String strValue = null;
 
+        String type = null;
+        String name[] = null;
+        String value = null;
+
+        // try-catch for STRING block declaration
+        // ========================================================================================== //
+        try
+        {
+            strType = ctx.decl().string_decl().STRING().toString();
+            strIdName = ctx.decl().string_decl().id().IDENTIFIER().toString();
+            strValue = ctx.decl().string_decl().str().STRINGLITERAL().toString();
+
+            System.out.printf("name %s type %s value %s\n", strIdName, strType, strValue);
+        }
+        catch (Exception e)
+        {
+            // Uncomment if you have to debug it
+            //System.out.printf("[STRING] var-name is: %s\n", e.getMessage());
+        }
+        // ========================================================================================== //
+
+        // try-catch for var-name *IS NOT FOR STRING*
+        // ========================================================================================== //
+        try
+        {
+            // Split-up var-names
+            // 1: Remove spaces from the incoming string of var-names
+            String str1 = ctx.decl().var_decl().id_list().getText().replaceAll("\\s+", "");
+
+            // Check if we have more then one var-name
+            // If more then 1, than we have multiple var-names
+            if (str1.length() > 1)
+            {
+                // 2: Create String array from the splitted string
+                name = str1.split(",");
+            }
+            else if (str1.length() == 1)
+            {
+                name = new String[1];
+                name[0] = str1;
+            }
+        }
+        catch (Exception e)
+        {
+            // Uncomment if you have to debug it
+            //System.out.printf("var-name is: %s\n", e.getMessage());
+        }
+        // ========================================================================================== //
+
+        // FLOAT
+        // ========================================================================================== //
+        if (type == null)
+        {
+            // try-catch for FLOAT
+            try
+            {
+                type = ctx.decl().var_decl().var_type().FLOAT().toString();
+            }
+            catch (Exception e)
+            {
+                // Uncomment if you have to debug it
+                //System.out.printf("FLOAT is: %s\n", e.getMessage());
+            }
+        }
+        // ========================================================================================== //
+
+        // INT
+        // ========================================================================================== //
+        if (type == null)
+        {
+            // try-catch for INT
+            try
+            {
+                type = ctx.decl().var_decl().var_type().INT().toString();
+            }
+            catch (Exception e)
+            {
+                // Uncomment if you have to debug it
+                //System.out.printf("INT is: %s\n", e.getMessage());
+            }
+        }
+        // ========================================================================================== //
+
+        // Print result *IS NOT FOR STRING*
+        if (type != null && name != null)
+        {
+            for (int i = 0; i < name.length; i++)
+            {
+                System.out.printf("name %s type %s\n", name[i], type);
+            }
+        }
     }
     /**
      * {@inheritDoc}
@@ -300,7 +446,6 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterStmt_list(MicroGrammarParser.Stmt_listContext ctx)
     {
-        int count = 1;
         String stmt = null;
         try
         {
@@ -596,7 +741,104 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterWhile_stmt(MicroGrammarParser.While_stmtContext ctx) { }
+    @Override public void enterWhile_stmt(MicroGrammarParser.While_stmtContext ctx)
+    {
+        String strType = null;
+        String strIdName = null;
+        String strValue = null;
+
+        String type = null;
+        String name[] = null;
+        String value = null;
+
+        // try-catch for STRING block declaration
+        // ========================================================================================== //
+        try
+        {
+            strType = ctx.decl().string_decl().STRING().toString();
+            strIdName = ctx.decl().string_decl().id().IDENTIFIER().toString();
+            strValue = ctx.decl().string_decl().str().STRINGLITERAL().toString();
+
+            System.out.printf("name %s type %s value %s\n", strIdName, strType, strValue);
+        }
+        catch (Exception e)
+        {
+            // Uncomment if you have to debug it
+            //System.out.printf("[STRING] var-name is: %s\n", e.getMessage());
+        }
+        // ========================================================================================== //
+
+        // try-catch for var-name *IS NOT FOR STRING*
+        // ========================================================================================== //
+        try
+        {
+            // Split-up var-names
+            // 1: Remove spaces from the incoming string of var-names
+            String str1 = ctx.decl().var_decl().id_list().getText().replaceAll("\\s+", "");
+
+            // Check if we have more then one var-name
+            // If more then 1, than we have multiple var-names
+            if (str1.length() > 1)
+            {
+                // 2: Create String array from the splitted string
+                name = str1.split(",");
+            }
+            else if (str1.length() == 1)
+            {
+                name = new String[1];
+                name[0] = str1;
+            }
+        }
+        catch (Exception e)
+        {
+            // Uncomment if you have to debug it
+            //System.out.printf("var-name is: %s\n", e.getMessage());
+        }
+        // ========================================================================================== //
+
+        // FLOAT
+        // ========================================================================================== //
+        if (type == null)
+        {
+            // try-catch for FLOAT
+            try
+            {
+                type = ctx.decl().var_decl().var_type().FLOAT().toString();
+            }
+            catch (Exception e)
+            {
+                // Uncomment if you have to debug it
+                //System.out.printf("FLOAT is: %s\n", e.getMessage());
+            }
+        }
+        // ========================================================================================== //
+
+        // INT
+        // ========================================================================================== //
+        if (type == null)
+        {
+            // try-catch for INT
+            try
+            {
+                type = ctx.decl().var_decl().var_type().INT().toString();
+            }
+            catch (Exception e)
+            {
+                // Uncomment if you have to debug it
+                //System.out.printf("INT is: %s\n", e.getMessage());
+            }
+        }
+        // ========================================================================================== //
+
+        // Print result *IS NOT FOR STRING*
+        if (type != null && name != null)
+        {
+            for (int i = 0; i < name.length; i++)
+            {
+                System.out.printf("name %s type %s\n", name[i], type);
+            }
+        }
+    }
     /**
      * {@inheritDoc}
      *
