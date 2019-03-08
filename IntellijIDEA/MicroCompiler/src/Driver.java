@@ -39,21 +39,30 @@ public class Driver
                 // Get resource from the file path
                 res = Paths.get(filePath).toUri().toURL();
 
-                /*
+
                 // Run Tokenizer
                 // IT IS STEP 1
                 //===========================================================================================//
-                MicroTokenizer microTokenizer = new MicroTokenizer(res);
-                microTokenizer.run();
+                //MicroTokenizer microTokenizer = new MicroTokenizer(res);
+                //microTokenizer.run();
                 //===========================================================================================//
-                */
+
 
                 // Initialize and run parser
                 // IT IS STEP 2
                 //===========================================================================================//
-                MicroParser microParser = new MicroParser(res);
-                microParser.run();
+                //MicroParser microParser = new MicroParser(res);
+                //microParser.run();
                 //===========================================================================================//
+
+
+                // Building symbol table
+                // IT IS STEP 3
+                //===========================================================================================//
+                MicroSymbolTable microSymbolTable = new MicroSymbolTable(res);
+                microSymbolTable.run();
+                //===========================================================================================//
+
             }
             catch (IOException e)
             {
