@@ -5,7 +5,7 @@
  */
 
 /**
- * This class used as a data structure fo the symbol table
+ * This class used as a data structure of the symbol table
  */
 public class MicroSymbolTable
 {
