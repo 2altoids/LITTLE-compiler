@@ -8,13 +8,20 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MicroListener extends MicroGrammarBaseListener
 {
     // Here should be implemented data structure to store our symbol table
     // and we have to return this symbol table from this class to the caller-class
+    private HashMap<Integer, MicroSymbolTable> symbolTable = new HashMap<Integer, MicroSymbolTable>();
 
     // This global var is used to count number of IFs WHILEs statements in side a function
-    private int count = 1;
+    private int elementCount = 1;
+    private int blockCount = 1;
+
+    private String currentSymbolTableName = null;
 
 
 
@@ -25,8 +32,12 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterProgram(MicroGrammarParser.ProgramContext ctx)
     {
-        /*Just test*/
-        System.out.printf("Symbol table GLOBAL\n");
+        String str = "Symbol table GLOBAL";
+        currentSymbolTableName = str;
+        symbolTable.put(new Integer(elementCount), new MicroSymbolTable(str));
+
+        //System.out.printf("Symbol table GLOBAL\n");
+        elementCount++;
     }
 
     /**
@@ -64,106 +75,7 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterDecl(MicroGrammarParser.DeclContext ctx)
-    {
-        /*
-        String strType = null;
-        String strIdName = null;
-        String strValue = null;
-
-        String type = null;
-        String name[] = null;
-        String value = null;
-
-        // try-catch for STRING block declaration
-        // ========================================================================================== //
-        try
-        {
-            strType = ctx.string_decl().STRING().toString();
-            strIdName = ctx.string_decl().id().IDENTIFIER().toString();
-            strValue = ctx.string_decl().str().STRINGLITERAL().toString();
-
-            System.out.printf("name %s type %s value %s\n", strIdName, strType, strValue);
-        }
-        catch (Exception e)
-        {
-            // Uncomment if you have to debug it
-            //System.out.printf("[STRING] var-name is: %s\n", e.getMessage());
-        }
-        // ========================================================================================== //
-
-        // try-catch for var-name *IS NOT FOR STRING*
-        // ========================================================================================== //
-        try
-        {
-            // Split-up var-names
-            // 1: Remove spaces from the incoming string of var-names
-            String str1 = ctx.decl().var_decl().id_list().getText().replaceAll("\\s+", "");
-
-            // Check if we have more then one var-name
-            // If more then 1, than we have multiple var-names
-            if (str1.length() > 1)
-            {
-                // 2: Create String array from the splitted string
-                name = str1.split(",");
-            }
-            else if (str1.length() == 1)
-            {
-                name = new String[1];
-                name[0] = str1;
-            }
-        }
-        catch (Exception e)
-        {
-            // Uncomment if you have to debug it
-            //System.out.printf("var-name is: %s\n", e.getMessage());
-        }
-        // ========================================================================================== //
-
-        // FLOAT
-        // ========================================================================================== //
-        if (type == null)
-        {
-            // try-catch for FLOAT
-            try
-            {
-                type = ctx.decl().var_decl().var_type().FLOAT().toString();
-            }
-            catch (Exception e)
-            {
-                // Uncomment if you have to debug it
-                //System.out.printf("FLOAT is: %s\n", e.getMessage());
-            }
-        }
-        // ========================================================================================== //
-
-        // INT
-        // ========================================================================================== //
-        if (type == null)
-        {
-            // try-catch for INT
-            try
-            {
-                type = ctx.decl().var_decl().var_type().INT().toString();
-            }
-            catch (Exception e)
-            {
-                // Uncomment if you have to debug it
-                //System.out.printf("INT is: %s\n", e.getMessage());
-            }
-        }
-        // ========================================================================================== //
-
-        // Print result *IS NOT FOR STRING*
-        if (type != null && name != null)
-        {
-            for (int i = 0; i < name.length; i++)
-            {
-                System.out.printf("name %s type %s\n", name[i], type);
-            }
-        }
-        */
-    }
+    @Override public void enterDecl(MicroGrammarParser.DeclContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -189,7 +101,14 @@ public class MicroListener extends MicroGrammarBaseListener
             strIdName = ctx.id().IDENTIFIER().toString();
             strValue = ctx.str().STRINGLITERAL().toString();
 
-            System.out.printf("name %s type %s value %s\n", strIdName, strType, strValue);
+            String name = strIdName;
+            String type = strType;
+            String value = strValue;
+
+            symbolTable.put(new Integer(elementCount), new MicroSymbolTable(name, type, value, currentSymbolTableName));
+
+            //System.out.printf("name %s type %s value %s\n", strIdName, strType, strValue);
+            elementCount++;
         }
         catch (Exception e)
         {
@@ -294,7 +213,10 @@ public class MicroListener extends MicroGrammarBaseListener
         {
             for (int i = 0; i < name.length; i++)
             {
-                System.out.printf("name %s type %s\n", name[i], type);
+                symbolTable.put(new Integer(elementCount), new MicroSymbolTable(name[i], type, currentSymbolTableName));
+
+                //System.out.printf("name %s type %s\n", name[i], type);
+                elementCount++;
             }
         }
     }
@@ -357,87 +279,7 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterParam_decl_list(MicroGrammarParser.Param_decl_listContext ctx)
-    {
-        /*
-        System.out.printf("\t[Enter-Param-decl-list]\n");
-
-        String type = null;
-        String name[] = null;
-        String value = null;
-
-        // try-catch for var-name *IS NOT FOR STRING*
-        // ========================================================================================== //
-        try
-        {
-            // Split-up var-names
-            // 1: Remove spaces from the incoming string of var-names
-            String str1 = ctx.param_decl().id().getText().replaceAll("\\s+", "");
-
-            // Check if we have more then one var-name
-            // If more then 1, than we have multiple var-names
-            if (str1.length() > 1)
-            {
-                // 2: Create String array from the splitted string
-                name = str1.split(",");
-            }
-            else if (str1.length() == 1)
-            {
-                name = new String[1];
-                name[0] = str1;
-            }
-        }
-        catch (Exception e)
-        {
-            // Uncomment if you have to debug it
-            //System.out.printf("var-name is: %s\n", e.getMessage());
-        }
-        // ========================================================================================== //
-
-        // FLOAT
-        // ========================================================================================== //
-        if (type == null)
-        {
-            // try-catch for FLOAT
-            try
-            {
-                type = ctx.param_decl_tail().param_decl().var_type().FLOAT().toString();
-            }
-            catch (Exception e)
-            {
-                // Uncomment if you have to debug it
-                //System.out.printf("FLOAT is: %s\n", e.getMessage());
-            }
-        }
-        // ========================================================================================== //
-
-        // INT
-        // ========================================================================================== //
-        if (type == null)
-        {
-            // try-catch for INT
-            try
-            {
-                type = ctx.param_decl().var_type().INT().toString();
-            }
-            catch (Exception e)
-            {
-                // Uncomment if you have to debug it
-                //System.out.printf("INT is: %s\n", e.getMessage());
-            }
-        }
-        // ========================================================================================== //
-
-        // Print result *IS NOT FOR STRING*
-        if (type != null && name != null)
-        {
-            for (int i = 0; i < name.length; i++)
-            {
-                System.out.printf("\tname %s type %s\n", name[i], type);
-            }
-        }
-        */
-    }
+    @Override public void enterParam_decl_list(MicroGrammarParser.Param_decl_listContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -524,7 +366,10 @@ public class MicroListener extends MicroGrammarBaseListener
         {
             for (int i = 0; i < name.length; i++)
             {
-                System.out.printf("name %s type %s\n", name[i], type);
+                symbolTable.put(new Integer(elementCount), new MicroSymbolTable(name[i], type, currentSymbolTableName));
+
+                //System.out.printf("name %s type %s\n", name[i], type);
+                elementCount++;
             }
         }
     }
@@ -565,12 +410,17 @@ public class MicroListener extends MicroGrammarBaseListener
      */
     @Override public void enterFunc_decl(MicroGrammarParser.Func_declContext ctx)
     {
-        /*Just test*/
         // ===================================================================== //
         //String func = ctx.FUNCTION().toString();
         //String funcType = ctx.any_type().VOID().toString();
         String funcName = ctx.id().IDENTIFIER().toString();
-        System.out.printf("\nSymbol table %s\n", funcName);
+
+        String symbolTableName = "Symbol table " + funcName;
+        currentSymbolTableName = symbolTableName;
+        symbolTable.put(new Integer(elementCount), new MicroSymbolTable(symbolTableName));
+
+        //System.out.printf("\nSymbol table %s\n", funcName);
+        elementCount++;
         // ===================================================================== //
     }
     /**
@@ -584,106 +434,7 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterFunc_body(MicroGrammarParser.Func_bodyContext ctx)
-    {
-        /*
-        String strType = null;
-        String strIdName = null;
-        String strValue = null;
-
-        String type = null;
-        String name[] = null;
-        String value = null;
-
-        // try-catch for STRING block declaration
-        // ========================================================================================== //
-        try
-        {
-            strType = ctx.decl().string_decl().STRING().toString();
-            strIdName = ctx.decl().string_decl().id().IDENTIFIER().toString();
-            strValue = ctx.decl().string_decl().str().STRINGLITERAL().toString();
-
-            System.out.printf("name %s type %s value %s\n", strIdName, strType, strValue);
-        }
-        catch (Exception e)
-        {
-            // Uncomment if you have to debug it
-            //System.out.printf("[STRING] var-name is: %s\n", e.getMessage());
-        }
-        // ========================================================================================== //
-
-        // try-catch for var-name *IS NOT FOR STRING*
-        // ========================================================================================== //
-        try
-        {
-            // Split-up var-names
-            // 1: Remove spaces from the incoming string of var-names
-            String str1 = ctx.decl().var_decl().id_list().getText().replaceAll("\\s+", "");
-
-            // Check if we have more then one var-name
-            // If more then 1, than we have multiple var-names
-            if (str1.length() > 1)
-            {
-                // 2: Create String array from the splitted string
-                name = str1.split(",");
-            }
-            else if (str1.length() == 1)
-            {
-                name = new String[1];
-                name[0] = str1;
-            }
-        }
-        catch (Exception e)
-        {
-            // Uncomment if you have to debug it
-            //System.out.printf("var-name is: %s\n", e.getMessage());
-        }
-        // ========================================================================================== //
-
-        // FLOAT
-        // ========================================================================================== //
-        if (type == null)
-        {
-            // try-catch for FLOAT
-            try
-            {
-                type = ctx.decl().var_decl().var_type().FLOAT().toString();
-            }
-            catch (Exception e)
-            {
-                // Uncomment if you have to debug it
-                //System.out.printf("FLOAT is: %s\n", e.getMessage());
-            }
-        }
-        // ========================================================================================== //
-
-        // INT
-        // ========================================================================================== //
-        if (type == null)
-        {
-            // try-catch for INT
-            try
-            {
-                type = ctx.decl().var_decl().var_type().INT().toString();
-            }
-            catch (Exception e)
-            {
-                // Uncomment if you have to debug it
-                //System.out.printf("INT is: %s\n", e.getMessage());
-            }
-        }
-        // ========================================================================================== //
-
-        // Print result *IS NOT FOR STRING*
-        if (type != null && name != null)
-        {
-            for (int i = 0; i < name.length; i++)
-            {
-                System.out.printf("name %s type %s\n", name[i], type);
-            }
-        }
-        */
-    }
+    @Override public void enterFunc_body(MicroGrammarParser.Func_bodyContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -695,59 +446,7 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterStmt_list(MicroGrammarParser.Stmt_listContext ctx)
-    {
-        /*
-        String stmt = null;
-        String stmt_else = null;
-
-        // try-catch for IF
-        try
-        {
-            stmt = ctx.stmt_list().stmt().if_stmt().IF().toString();
-
-            // try-catch for ELSE
-            try
-            {
-                stmt_else = ctx.stmt_list().stmt().if_stmt().else_part().ELSE().toString();
-                //count++;
-            }
-            catch (Exception e)
-            {
-                // Uncomment to debug
-                //System.out.printf("func-stmt: %s\n", e.getMessage());
-            }
-        }
-        catch (Exception e)
-        {
-            // Uncomment to debug
-            //System.out.printf("func-stmt: %s\n", e.getMessage());
-        }
-
-        // try-catch for WHILE
-        try
-        {
-            stmt = ctx.stmt_list().stmt().while_stmt().WHILE().toString();
-        }
-        catch (Exception e)
-        {
-            // Uncomment to debug
-            //System.out.printf("func-stmt: %s\n", e.getMessage());
-        }
-
-        if (stmt != null)
-        {
-            System.out.printf("\nSymbol table BLOCK %d\n", count);
-            count++;
-        }
-
-        if (stmt_else != null)
-        {
-            System.out.printf("\nSymbol table BLOCK %d\n", count);
-            count++;
-        }
-        */
-    }
+    @Override public void enterStmt_list(MicroGrammarParser.Stmt_listContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -759,10 +458,7 @@ public class MicroListener extends MicroGrammarBaseListener
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterStmt(MicroGrammarParser.StmtContext ctx)
-    {
-
-    }
+    @Override public void enterStmt(MicroGrammarParser.StmtContext ctx) { }
     /**
      * {@inheritDoc}
      *
@@ -990,13 +686,18 @@ public class MicroListener extends MicroGrammarBaseListener
         catch (Exception e)
         {
             // Uncomment to debug
-            System.out.printf("func-stmt: %s\n", e.getMessage());
+            //System.out.printf("func-stmt: %s\n", e.getMessage());
         }
 
         if (stmt != null)
         {
-            System.out.printf("\nSymbol table BLOCK %d\n", count);
-            count++;
+            String symbolTableName = "Symbol table BLOCK " + blockCount;
+            currentSymbolTableName = symbolTableName;
+            symbolTable.put(new Integer(elementCount), new MicroSymbolTable(symbolTableName));
+
+            //System.out.printf("\nSymbol table BLOCK %d\n", blockCount);
+            blockCount++;
+            elementCount++;
         }
     }
     /**
@@ -1027,8 +728,13 @@ public class MicroListener extends MicroGrammarBaseListener
 
         if (stmt != null)
         {
-            System.out.printf("\nSymbol table BLOCK %d\n", count);
-            count++;
+            String symbolTableName = "Symbol table BLOCK " + blockCount;
+            currentSymbolTableName = symbolTableName;
+            symbolTable.put(new Integer(elementCount), new MicroSymbolTable(symbolTableName));
+
+            //System.out.printf("\nSymbol table BLOCK %d\n", blockCount);
+            blockCount++;
+            elementCount++;
         }
     }
     /**
@@ -1083,8 +789,13 @@ public class MicroListener extends MicroGrammarBaseListener
 
         if (stmt != null)
         {
-            System.out.printf("\nSymbol table BLOCK %d\n", count);
-            count++;
+            String symbolTableName = "Symbol table BLOCK " + blockCount;
+            currentSymbolTableName = symbolTableName;
+            symbolTable.put(new Integer(elementCount), new MicroSymbolTable(symbolTableName));
+
+            //System.out.printf("\nSymbol table BLOCK %d\n", blockCount);
+            blockCount++;
+            elementCount++;
         }
     }
     /**
@@ -1130,4 +841,9 @@ public class MicroListener extends MicroGrammarBaseListener
      * <p>The default implementation does nothing.</p>
      */
     @Override public void visitErrorNode(ErrorNode node) { }
+
+    public Map<Integer, MicroSymbolTable> getSymbolTable()
+    {
+        return this.symbolTable;
+    }
 }
