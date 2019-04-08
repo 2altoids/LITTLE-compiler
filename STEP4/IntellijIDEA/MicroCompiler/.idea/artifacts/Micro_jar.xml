@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Micro:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Micro_jar</output-path>
+    <root id="archive" name="MicroCompiler.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/jarout/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="MicroCompiler" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/ANTLR/antlr-4.7.2-complete.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/ANTLR/antlr-runtime-4.7.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
