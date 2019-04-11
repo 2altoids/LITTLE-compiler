@@ -50,8 +50,15 @@ public class DriverSymbolTable
             parseTreeWalker.walk(microListener, parser.program());
             //new ParseTreeWalker().walk(microListener, parser.program());
 
-            // Print symbol table
+            // IS NOT APPLICABLE FOR THE STEP 3 BECAUSE DATA-STRUCTURE WAS MODIFIED FOR STEP 4,
+            // AS WELL AS MicroListener WAS MODIFIED FOR STEP 4.
+            // ----------------------------------------------------------------------------------- //
+            // Print symbol table for STEP 3
             //prettyPrint(microListener.getSymbolTable());
+            // ----------------------------------------------------------------------------------- //
+
+            // Print symbol table for STEP 4
+            print(microListener.getSymbolTable());
 
         }
         catch (IOException e)
@@ -61,12 +68,12 @@ public class DriverSymbolTable
     }
 
     /**
-     * Print symbol table
+     * Print symbol table for STEP 3
      * @param tmp: Map<Integer, MicroSymbolTable>
      */
     private void prettyPrint(Map<Integer, MicroSymbolTable> tmp)
     {
-        // Check is symbol table get duplicate identifiers
+        // Check if symbol table get duplicate identifiers
         // if there are duplicate identifiers, then print and error message
         Map<String, MicroSymbolTable> duplicates = duplicateCheck(tmp);
         if (duplicates != null)
@@ -112,7 +119,7 @@ public class DriverSymbolTable
                     System.out.printf("%s\n", str);
                 }
 
-                // This IF block is for INT, FLOAT types
+                // This IF block is for INT and FLOAT types
                 if (name != null && type != null && value == null)
                 {
                     String str = "name " + name + " type " + type;
@@ -122,6 +129,107 @@ public class DriverSymbolTable
         }
 
     }
+
+
+    /**
+     * Print symbol table for STEP 4
+     * @param tmp: Map<Integer, MicroSymbolTable>
+     */
+    private void print(Map<Integer, MicroSymbolTable> tmp)
+    {
+        // Check if symbol table get duplicate identifiers
+        // if there are duplicate identifiers, then print and error message
+        Map<String, MicroSymbolTable> duplicates = duplicateCheck(tmp);
+        if (duplicates != null)
+        {
+            for (Map.Entry<String, MicroSymbolTable> entry : duplicates.entrySet())
+            {
+                System.out.printf("DECLARATION ERROR %s\n", entry.getKey());
+            }
+        }
+
+        // If no duplicate identifiers print symbol table
+        if (duplicates == null)
+        {
+            // This counter used to specify where we should print extra new-line
+            int countSymTable = 0;
+
+            for (Map.Entry<Integer, MicroSymbolTable> entry : tmp.entrySet())
+            {
+                int symbolTableID = entry.getValue().getSymbolTableId();
+                String symbolTable = entry.getValue().getSymbolTableName();
+
+                String name = entry.getValue().getName();
+                String type = entry.getValue().getType();
+                String value = entry.getValue().getValue();
+
+                String nl = "";
+
+                // Checking if we need to print extra newline
+                // ================================================================================= //
+                if (symbolTable != null)
+                {
+                    // Printing extra new-line or not
+                    if(countSymTable == 0)
+                    {
+                        nl = "";
+                    }
+                    else if(countSymTable > 0)
+                    {
+                        nl = "\n";
+                    }
+                    countSymTable++;
+
+                    // Printing symbol-table
+                    System.out.printf("%s[%d]: %s\n", nl, symbolTableID, symbolTable);
+
+                    // Printing statements
+                    // ---------------------------------------------------------------------------------- //
+                    if(entry.getValue().getStatementObj() != null)
+                    {
+                        String lable = entry.getValue().getStatementObj().getLableName();
+                        String statement = null;
+                        if(entry.getValue().getStatementObj().isCondition())
+                        {
+                            statement = "condition";
+                        }
+                        else
+                        {
+                            statement = "expression";
+                        }
+                        String strOut = entry.getValue().getStatementObj().getStatement();
+
+                        System.out.printf("\t\t%s --- %s: %s\n", lable, statement, strOut);
+                    }
+                    // ---------------------------------------------------------------------------------- //
+                }
+                // ================================================================================= //
+
+                // Printing strings declarations
+                // This IF block, is for STRING type because usually STRING go with some value
+                // ---------------------------------------------------------------------------------- //
+                if (name != null && type != null && value != null)
+                {
+                    String str = "name " + name + " type " + type + " value " + value;
+                    System.out.printf("[%d]: %s\n", symbolTableID, str);
+                }
+                // ---------------------------------------------------------------------------------- //
+
+                // Printing variables declarations
+                // This IF block, is for INT and FLOAT types
+                // ---------------------------------------------------------------------------------- //
+                if (name != null && type != null && value == null)
+                {
+                    String str = "name " + name + " type " + type;
+                    System.out.printf("[%d]: %s\n", symbolTableID, str);
+                }
+                // ---------------------------------------------------------------------------------- //
+                // ================================================================================= //
+            }
+        }
+
+    }
+
 
     /**
      * Check for duplicate identifiers

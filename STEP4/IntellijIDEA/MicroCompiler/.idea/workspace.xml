@@ -17,38 +17,14 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Driver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MicroTokenizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10025">
-              <caret line="417" column="63" selection-start-line="417" selection-start-column="63" selection-end-line="417" selection-end-column="63" />
-              <folding>
-                <element signature="e#0#14558#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DriverSymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+            <state relative-caret-position="70">
+              <caret line="203" column="108" selection-start-line="203" selection-start-column="108" selection-end-line="203" selection-end-column="108" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#prettyPrint#0;class#DriverSymbolTable#0" />
+                <element signature="method#duplicateCheck#0;class#DriverSymbolTable#0" />
               </folding>
             </state>
           </provider>
@@ -57,14 +33,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MicroListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14075">
-              <caret line="593" column="20" lean-forward="true" selection-start-line="593" selection-start-column="20" selection-end-line="593" selection-end-column="20" />
+            <state relative-caret-position="70">
+              <caret line="789" column="42" selection-start-line="789" selection-start-column="42" selection-end-line="789" selection-end-column="42" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#30779#30780#0" expanded="true" />
-                <element signature="e#30818#30819#0" expanded="true" />
+                <element signature="e#33882#33883#0" expanded="true" />
+                <element signature="e#35098#35099#0" expanded="true" />
+                <element signature="e#37951#37952#0" expanded="true" />
+                <element signature="e#39065#39066#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MicroSymbolTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="950">
+              <caret line="59" column="43" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#2801#2802#0" expanded="true" />
+                <element signature="e#2840#2841#0" expanded="true" />
+                <element signature="e#2882#2883#0" expanded="true" />
+                <element signature="e#2921#2922#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Statement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -72,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MicroGrammar.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-end-line="7" selection-end-column="7" />
+            <state relative-caret-position="363">
+              <caret line="41" column="36" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="36" />
               <folding>
                 <element signature="e#0#4147#0" expanded="true" />
               </folding>
@@ -82,27 +85,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase.micro">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-75">
+              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase2.micro">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-325" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testfiles/Step4/outputs/step4_testcase2.out">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="6" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="6" />
+            <state relative-caret-position="288">
+              <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testfiles/Step4/tinyDoc.txt">
+        <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_adv.micro">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1150">
-              <caret line="46" column="4" selection-start-line="46" selection-end-line="46" selection-end-column="4" />
-            </state>
+            <state relative-caret-position="-362" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_if.micro">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-162" />
           </provider>
         </entry>
       </file>
@@ -117,15 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>str</find>
-      <find>space</find>
-      <find>param</find>
-      <find>var_type</find>
-      <find>enterFunc</find>
-      <find>enterWh</find>
-      <find>enterIf</find>
-      <find>enterEls</find>
-      <find>enterWhi</find>
       <find>Enter-Param-decl-list</find>
       <find>enterPara</find>
       <find>Symbol table BLOCK</find>
@@ -138,10 +139,24 @@
       <find>assign_stmt</find>
       <find>func</find>
       <find>assign_ex</find>
-      <find>currentSymbolTableName</find>
       <find>label</find>
       <find>assi</find>
+      <find>symbolTableRealName</find>
+      <find>param_decl</find>
       <find>write</find>
+      <find>while</find>
+      <find>enterWhi</find>
+      <find>enterWh</find>
+      <find>exitEls</find>
+      <find>exitIf</find>
+      <find>isInELSE</find>
+      <find>enterElse</find>
+      <find>enterWhile</find>
+      <find>enterIf</find>
+      <find>enterWrit</find>
+      <find>cond</find>
+      <find>enterRea</find>
+      <find>currentSymbolTableName</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -154,10 +169,12 @@
         <option value="$PROJECT_DIR$/src/MicroGrammar.g4" />
         <option value="$PROJECT_DIR$/src/MicroVisitor.java" />
         <option value="$PROJECT_DIR$/testfiles/Step3/inputs/test6.micro" />
-        <option value="$PROJECT_DIR$/src/MicroSymbolTable.java" />
         <option value="$PROJECT_DIR$/src/Driver.java" />
-        <option value="$PROJECT_DIR$/src/DriverSymbolTable.java" />
+        <option value="$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase2.micro" />
+        <option value="$PROJECT_DIR$/src/Statement.java" />
+        <option value="$PROJECT_DIR$/src/MicroSymbolTable.java" />
         <option value="$PROJECT_DIR$/src/MicroListener.java" />
+        <option value="$PROJECT_DIR$/src/DriverSymbolTable.java" />
       </list>
     </option>
   </component>
@@ -171,7 +188,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -189,6 +205,12 @@
               <item name="MicroCompiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="MicroCompiler" type="462c0819:PsiDirectoryNode" />
               <item name="testfiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MicroCompiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MicroCompiler" type="462c0819:PsiDirectoryNode" />
+              <item name="testfiles" type="462c0819:PsiDirectoryNode" />
+              <item name="Step3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MicroCompiler" type="b2602c69:ProjectViewProjectNode" />
@@ -214,11 +236,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554758379596" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/testfiles/Step4/inputs/test_mult.micro" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554950903139" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase2.micro" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -245,7 +268,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Driver" />
       <module name="MicroCompiler" />
-      <option name="PROGRAM_PARAMETERS" value="testfiles\step4\inputs\step4_testcase2.micro" />
+      <option name="PROGRAM_PARAMETERS" value="testfiles\step4\inputs\test_adv.micro" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -283,7 +306,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32993197" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3877551" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5595238" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39965987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -305,7 +328,7 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.22390318" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23373677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -314,7 +337,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32993197" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.579932" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3877551" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39965987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -324,7 +347,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32993197" />
       <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.71088433" />
-      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32993197" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -332,23 +355,11 @@
       <window_info anchor="right" id="Maven" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="7" side_tool="true" visible="true" weight="0.02496218" />
+      <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="7" side_tool="true" visible="true" weight="0.027987897" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/outputs/test1.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MicroVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test1.micro">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/outputs/test5.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/Step3/outputs/test7.out">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-62" />
@@ -400,21 +411,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/outputs/test19.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test19.micro">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/ANTLR/antlr-4.7.2-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test20.micro">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/Step3/outputs/test6.out">
       <provider selected="true" editor-type-id="text-editor">
@@ -477,13 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test21.micro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/Step3/outputs/test21.out">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -491,20 +486,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test9.micro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/Step4/outputs/test_expr.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_expr.micro">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_adv.micro">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/step1/outputs/fibonacci.out">
@@ -532,16 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MicroSymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-575">
-          <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test5.micro">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -549,35 +521,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase.micro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_mult.micro">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/Step4/outputs/test_mult.out">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Driver.java">
+    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test9.micro">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MicroTokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10025">
+        <state relative-caret-position="463">
           <caret line="417" column="63" selection-start-line="417" selection-start-column="63" selection-end-line="417" selection-end-column="63" />
           <folding>
             <element signature="e#0#14558#0" expanded="true" />
@@ -586,54 +542,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DriverSymbolTable.java">
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        <state relative-caret-position="300">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step4/tinyDoc.txt">
+    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test21.micro">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1150">
-          <caret line="46" column="4" selection-start-line="46" selection-end-line="46" selection-end-column="4" />
+        <state relative-caret-position="250">
+          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test20.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step3/inputs/test19.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-287" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step3/outputs/test19.out">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/testfiles/Step4/outputs/step4_testcase2.out">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="6" />
+        <state relative-caret-position="275">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase2.micro">
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/tinyDoc.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-325" />
+        <state relative-caret-position="1175">
+          <caret line="47" column="50" lean-forward="true" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MicroGrammar.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-end-line="7" selection-end-column="7" />
+        <state relative-caret-position="363">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="36" />
           <folding>
             <element signature="e#0#4147#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_combination.micro">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_expr.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_mult.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_while.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_if.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MicroSymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="59" column="43" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2801#2802#0" expanded="true" />
+            <element signature="e#2840#2841#0" expanded="true" />
+            <element signature="e#2882#2883#0" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DriverSymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="203" column="108" selection-start-line="203" selection-start-column="108" selection-end-line="203" selection-end-column="108" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#prettyPrint#0;class#DriverSymbolTable#0" />
+            <element signature="method#duplicateCheck#0;class#DriverSymbolTable#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/step4_testcase2.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testfiles/Step4/inputs/test_adv.micro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-362" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MicroListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14075">
-          <caret line="593" column="20" lean-forward="true" selection-start-line="593" selection-start-column="20" selection-end-line="593" selection-end-column="20" />
+        <state relative-caret-position="70">
+          <caret line="789" column="42" selection-start-line="789" selection-start-column="42" selection-end-line="789" selection-end-column="42" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#30779#30780#0" expanded="true" />
-            <element signature="e#30818#30819#0" expanded="true" />
+            <element signature="e#33882#33883#0" expanded="true" />
+            <element signature="e#35098#35099#0" expanded="true" />
+            <element signature="e#37951#37952#0" expanded="true" />
+            <element signature="e#39065#39066#0" expanded="true" />
           </folding>
         </state>
       </provider>
