@@ -6,12 +6,15 @@ public class Statement
     private boolean isCondition = false;
     private String statement = null;
 
-    public Statement(String currentSymbolTableName, String lableName, boolean isCondition, String statement)
+    private boolean isBeginningOfBlock = false;
+
+    public Statement(String currentSymbolTableName, String lableName, boolean isCondition, String statement, boolean isBeginningOfBlock)
     {
         this.currentSymbolTableName = currentSymbolTableName;
         this.lableName = lableName;
         this.isCondition = isCondition;
         this.statement = statement;
+        this.isBeginningOfBlock = isBeginningOfBlock;
     }
 
     public String getLableName()
@@ -27,5 +30,10 @@ public class Statement
     public String getStatement()
     {
         return this.statement;
+    }
+
+    public boolean isBeginningOfBlock()
+    {
+        return this.isBeginningOfBlock;
     }
 }

@@ -195,11 +195,14 @@ public class DriverSymbolTable
                         }
                         else
                         {
-                            statement = "expression";
+                            statement = "assignment";
                         }
                         String strOut = entry.getValue().getStatementObj().getStatement();
 
                         System.out.printf("\t\t%s --- %s: %s\n", lable, statement, strOut);
+
+                        boolean isBeginningOfBlock = entry.getValue().getStatementObj().isBeginningOfBlock();
+                        System.out.printf("\t\tBLOCK BEGINNING: %b\n", isBeginningOfBlock);
                     }
                     // ---------------------------------------------------------------------------------- //
                 }
